@@ -35,7 +35,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <template v-for="genre in showsGroupedAndSorted.keys()" :key="genre">
-    <ShowsList :shows="showsGroupedAndSorted.get(genre)!" :genre="genre" />
-  </template>
+  <ShowsList
+    v-for="genre in showsGroupedAndSorted.keys()"
+    :key="genre"
+    :shows="showsGroupedAndSorted.get(genre)!"
+    :genre="genre"
+  />
 </template>

@@ -1,61 +1,26 @@
-# abn-challenge
+# ABN AMRO challenge
 
-This template should help get you started developing with Vue 3 in Vite.
+This is my first Vue 3 project. I chose Vue because it was suggested by the assignment document. The project is straightforward, so there is no significant advantages on using one framework or another. I created the project using the official Vue.js documentation and followed the folder and file structure proposed by the scaffolding tool. The `views` and `components` folders are sufficient for this project. As the project scales, there might be a need for a different approach. Typically, I prefer to keep the structure consistent with the existing project. If there is no structure, I prefer to use business domain modules along with a library for reusable modules. For example, `SearchView` will be placed together with the `ShowCompact` component, and the main module will load it using the lazy loading mechanism of the router.
 
-## Recommended IDE Setup
+I added Axios for the web requests as I find it more flexible and easier to maintain compared to the native browser Fetch API.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+The shows index API returns paginated data. For the sake of this project, I decided to use only the first page. To improve the user experience, I find it handy to create dedicated endpoint(s) for the shows displayed on the home page.
 
-## Type Support for `.vue` Imports in TS
+The typings for the shows web API are created based on a few data samples; hence the typings might not be fully accurate.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Prerequisites
 
-## Customize configuration
+- **Node.js**: The project was developed and tested with v20.12.0.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Run the project locally
 
 ```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
+npm install # install dependencies
+npm run dev # run the development server
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
 npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```

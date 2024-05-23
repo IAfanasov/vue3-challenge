@@ -25,6 +25,7 @@ const search = async () => {
     router.push({ query: { q: query.value } })
     const response = await showsApi.searchShows(query.value)
     shows.value = response.data.map((entry: ScoredShow) => entry.show)
+    error.value = ''
   } catch (err) {
     error.value = 'Failed to search shows. Please try again.'
     console.error('Error searching shows:', err)
@@ -34,10 +35,10 @@ const search = async () => {
 }
 
 watch(
-  route,
-  () => {
-    if (route.query.q) {
-      query.value = route.query.q as string
+  () => route.query.q,
+  (newQuery) => {
+    if (newQuery) {
+      query.value = newQuery as string
       search()
     }
   },
@@ -59,18 +60,16 @@ watch(
       <button @click="search" class="search-button" type="button">Search</button>
     </div>
 
-    <div v-if="loading" class="loading">Loading...</div>
-
-    <div v-if="error" class="error">{{ error }}</div>
-
-    <div v-if="shows.length > 0" class="show-results">
+    <div v-if="loading" class="search-message">Loading...</div>
+    <div v-else-if="error" class="search-message error">{{ error }}</div>
+    <div v-else-if="!query" class="search-message">Enter search keyword to start search.</div>
+    <div v-else-if="!shows.length" class="search-message">No shows found.</div>
+    <div v-else class="show-results">
       <p v-if="shows.length == 10">The top 10 entries are shown</p>
       <RouterLink :to="`/show/${show.id}`" v-for="show in shows" :key="show.id" class="show-entry">
         <ShowCompact :show="show" />
       </RouterLink>
     </div>
-
-    <div v-else-if="!loading && !error" class="no-results">No shows found.</div>
   </div>
 </template>
 
@@ -87,23 +86,23 @@ watch(
   gap: 0.5rem;
 }
 
-.search-input {
+.search-input,
+.search-button {
   height: 2rem;
-  flex: 1;
   padding: 0.5rem;
-  border: 1px solid var(--color-border);
   border-radius: 0.25rem;
+}
+.search-input {
+  flex: 1;
+  border: 1px solid var(--color-border);
 }
 
 .search-button {
-  height: 2rem;
   width: 80px;
   flex-shrink: 0;
-  padding: 0.5rem;
   background-color: var(--color-background-soft);
   color: var(--color-text);
   border: none;
-  border-radius: 0.25rem;
   cursor: pointer;
 }
 
@@ -111,15 +110,8 @@ watch(
   background-color: var(--color-background-hover);
 }
 
-.loading {
-  text-align: center;
-  margin-top: 1.25rem;
-}
-
 .error {
   color: var(--color-error);
-  text-align: center;
-  margin-top: 1.25rem;
 }
 
 .show-results {
@@ -130,7 +122,7 @@ watch(
   align-items: center;
 }
 
-.no-results {
+.search-message {
   text-align: center;
   margin-top: 1.25rem;
 }
@@ -140,7 +132,7 @@ watch(
   width: 100%;
 }
 
-@media (max-width: 37.5rem) {
+@media (max-width: 600px) {
   .search-box {
     flex-direction: column;
   }
