@@ -15,7 +15,7 @@ export const showsApi = {
     return showsApiClient.get<Show>(`/shows/${id}`)
   },
   searchShows(query: string) {
-    return showsApiClient.post<ScoredShow[]>(`/search/shows?q=${query}`)
+    return showsApiClient.get<ScoredShow[]>(`/search/shows?q=${query}`)
   }
 }
 
@@ -73,11 +73,6 @@ export interface Country {
   timezone: string
 }
 
-export interface Image {
-  medium: string
-  original: string
-}
-
 export interface Links {
   self: {
     href: string
@@ -100,7 +95,7 @@ export interface Show {
   averageRuntime: number | null
   premiered: string | null
   ended: string | null
-  officialSite?: string | null
+  officialSite?: string
   schedule: Schedule
   rating: Rating
   weight: number
@@ -108,7 +103,7 @@ export interface Show {
   webChannel?: any
   dvdCountry?: any
   externals: Externals
-  image: Image
+  image?: Image
   summary?: string | null
   updated: number
   _links: Links
