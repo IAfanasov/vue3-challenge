@@ -8,6 +8,8 @@ The shows index API returns paginated data. For the sake of this project, I deci
 
 The typings for the shows web API are created based on a few data samples; hence the typings might not be fully accurate.
 
+Regarding this assignment note: "Please feel free to include more features other than the few mentioned above." It is difficult to decide when to stop polishing your code for such assignments. There are many features one could imagine might be useful for this app. To avoid the assignment from expanding into unmanageable time consumption, I implemented only the main requirements.
+
 ## Prerequisites
 
 - **Node.js**: The project was developed and tested with v20.12.0.
@@ -28,3 +30,19 @@ To run the unit tests:
 ```sh
 npm run test:unit
 ```
+
+# Assignment notes checklist
+
+- [x] Please keep in mind that we use VueJS in ABN AMRO. Preferably, you complete this assessment using this framework.
+- [x] Application must be responsive and mobile friendly
+- [x] Please keep the leverage/use of scaffolding tools, boilerplate templates, plugins etc. to a minimum.
+      We don’t expect you to create things from scratch but, we also would like to see your own
+      creation
+- [x] Please create a readme file that explains your architectural decisions (E.G. why did you choose a
+      specific framework) and make sure you include instructions on how to run your solution, add
+      details about NodeJS version being used and NPM.
+- [x] Please include unit tests
+- [x] Please check that application is running and there are no console errors before sending it to us
+- [x] Please make sure that the UI is simple yet eye-catching
+- [ ] Please feel free to include more features other than the few mentioned above.
+- [x] You may notice there is no endpoint in the TVMaze API that cleanly returns shows by genre. However, the "Show index" endpoint should contain the data you need
