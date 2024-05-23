@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { showsApi, type ScoredShow, type Show } from '@/services/showsApi'
-import ShowCompact from '@/components/ShowCompact.vue'
+import ShowCompact from '@/components/ShowCompact/ShowCompact.vue'
 
 const router = useRouter()
 const route = useRoute()

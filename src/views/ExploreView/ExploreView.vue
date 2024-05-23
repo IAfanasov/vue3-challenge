@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { showsApi, type Show } from '../services/showsApi'
-import ShowsList from '@/components/ShowsList.vue'
+import { showsApi, type Show } from '../../services/showsApi'
+import ShowsList from '@/components/ShowsList/ShowsList.vue'
 
 const showsGroupedAndSorted = ref<Map<string, Show[]>>(new Map())
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ShowDetails from '@/components/ShowDetails.vue'
+import ShowDetails from '@/components/ShowDetails/ShowDetails.vue'
 import { showsApi, type Show } from '@/services/showsApi'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'

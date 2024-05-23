@@ -19,7 +19,11 @@ npm install # install dependencies
 npm run dev # run the development server
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## Unit Tests
+
+As I'm new to vuejs, my knowledge makes TDD not feasible at this moment. I created one test file with clarifying comments to showcase my unit test skills.
+
+To run the unit tests:
 
 ```sh
 npm run test:unit
