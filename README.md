@@ -4,7 +4,7 @@ This is my first Vue 3 project. I chose Vue because it was suggested by the assi
 
 I added Axios for the web requests as I find it more flexible and easier to maintain compared to the native browser Fetch API.
 
-The shows index API returns paginated data. For the sake of this project, I decided to use only the first page. To improve the user experience, I find it handy to create dedicated endpoint(s) for the shows displayed on the home page.
+The shows index API returns paginated data. For the sake of this project, I decided to use only the first page. To improve the user experience, I find it handy to create dedicated endpoint(s) for the data displayed on the home page.
 
 The typings for the shows web API are created based on a few data samples; hence the typings might not be fully accurate.
 
@@ -23,7 +23,7 @@ npm run dev # run the development server
 
 ## Unit Tests
 
-As I'm new to vuejs, my knowledge makes TDD not feasible at this moment. I created one test file with clarifying comments to showcase my unit test skills.
+As I'm new to vuejs, my knowledge makes TDD not feasible at this moment. After implementing the project, I created one test file with clarifying comments to showcase my unit test skills. I hope that is enough.
 
 To run the unit tests:
 
