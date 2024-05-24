@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ExploreView from '../views/ExploreView/ExploreView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +6,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'explore',
-      component: ExploreView
+      component: import('../views/ExploreView/ExploreView.vue')
     },
     {
       path: '/search',

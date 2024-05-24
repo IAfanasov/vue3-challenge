@@ -62,7 +62,6 @@ watch(
 
     <div v-if="loading" class="search-message">Loading...</div>
     <div v-else-if="error" class="search-message error">{{ error }}</div>
-    <div v-else-if="!query" class="search-message">Enter search keyword to start search.</div>
     <div v-else-if="!shows.length" class="search-message">No shows found.</div>
     <div v-else class="show-results">
       <p v-if="shows.length == 10">The top 10 entries are shown</p>

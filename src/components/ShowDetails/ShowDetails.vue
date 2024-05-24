@@ -27,6 +27,7 @@ defineProps<{
           <p><strong>Language:</strong> {{ show.language }}</p>
         </div>
       </div>
+      <!-- Using v-html with an assumption that the data source is trusted. Could lead to injections. -->
       <div class="show-summary" v-html="show.summary"></div>
     </div>
   </template>

@@ -5,8 +5,12 @@ import ShowsList from '@/components/ShowsList/ShowsList.vue'
 
 const showsGroupedAndSorted = ref<Map<string, Show[]>>(new Map())
 
+const error = ref('')
+const loading = ref(false)
+
 const fetchShows = async () => {
   try {
+    loading.value = true
     const response = await showsApi.getShows()
     const showsGrouped = response.data.reduce((acc: Map<string, Show[]>, show: Show) => {
       show.genres.forEach((genre: string) => {
@@ -24,8 +28,12 @@ const fetchShows = async () => {
         shows.sort((a, b) => Number(b.rating.average) - Number(a.rating.average))
       ])
     )
-  } catch (error) {
-    console.error('Error fetching shows:', error)
+    error.value = ''
+  } catch (err) {
+    error.value = 'Failed to fetch shows. Please try again.'
+    console.error('Error fetching shows:', err)
+  } finally {
+    loading.value = false
   }
 }
 
@@ -35,10 +43,25 @@ onMounted(() => {
 </script>
 
 <template>
-  <ShowsList
-    v-for="genre in showsGroupedAndSorted.keys()"
-    :key="genre"
-    :shows="showsGroupedAndSorted.get(genre)!"
-    :genre="genre"
-  />
+  <div v-if="loading" class="message">Loading...</div>
+  <div v-else-if="error" class="message error">{{ error }}</div>
+  <template v-else>
+    <ShowsList
+      v-for="genre in showsGroupedAndSorted.keys()"
+      :key="genre"
+      :shows="showsGroupedAndSorted.get(genre)!"
+      :genre="genre"
+    />
+  </template>
 </template>
+
+<style scoped>
+.message {
+  text-align: center;
+  margin-top: 1.25rem;
+}
+
+.error {
+  color: var(--color-error);
+}
+</style>
