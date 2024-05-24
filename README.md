@@ -30,3 +30,7 @@ To run the unit tests:
 ```sh
 npm run test:unit
 ```
+
+## E2E Tests
+
+Are not implemented as it was not required.
